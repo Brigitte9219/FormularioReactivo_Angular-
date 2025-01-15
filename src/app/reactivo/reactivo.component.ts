@@ -1,16 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactivo',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './reactivo.component.html',
   styleUrl: './reactivo.component.css'
 })
 export class ReactivoComponent {
 
-  name = new FormControl('');
-  email = new FormControl('');
+  name = new FormControl('', Validators.required);
+  email = new FormControl('', [ Validators.required, Validators.email]);
 
 }
