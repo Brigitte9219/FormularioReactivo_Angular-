@@ -5,10 +5,10 @@ import { ReactivoComponent } from "./reactivo/reactivo.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactivoComponent],
+  imports: [ ReactivoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'formularioReactivoAngular';
+  title = 'Formulario Reactivo Angular';
 }
