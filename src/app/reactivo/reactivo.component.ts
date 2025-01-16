@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactivo',
@@ -11,7 +11,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ReactivoComponent {
 
-
   get name(){
     return this.formUser.get('name') as FormControl;
   }
@@ -20,11 +19,22 @@ export class ReactivoComponent {
     return this.formUser.get('email') as FormControl;
   }
 
-  formUser = new FormGroup({
-    'name': new FormControl('', Validators.required),
-    'email': new FormControl('', [ Validators.required, Validators.email])
-  });
+  formUser: FormGroup;
 
+  constructor(private fb: FormBuilder) {
+    this.formUser = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  // segunda vez***
+  // formUser = new FormGroup({
+  //   'name': new FormControl('', Validators.required),
+  //   'email': new FormControl('', [ Validators.required, Validators.email])
+  // });
+
+  // primera vez***
   //name = new FormControl('', Validators.required);
   //email = new FormControl('', [ Validators.required, Validators.email]);
 
